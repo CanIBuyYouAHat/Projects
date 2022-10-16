@@ -29,7 +29,8 @@ function GoalInput(props) {
         />
         <TextInput
           style={styles.textInput}
-          placeholder="Your Course Goal"
+          placeholder="Add Goal"
+          placeholderTextColor="black"
           onChangeText={goalInputHandler}
           value={enteredGoalText}
         />
@@ -38,7 +39,14 @@ function GoalInput(props) {
             <Button title="Add Goal" onPress={addGoalHandler} color="#b180f0" />
           </View>
           <View styles={styles.button}>
-            <Button title="Cancel" onPress={props.onCancel} color="#f31282" />
+            <Button
+              title="Cancel"
+              onPress={() => {
+                setEnteredGoalText("");
+                props.onCancel();
+              }}
+              color="#f31282"
+            />
           </View>
         </View>
       </View>
@@ -54,6 +62,7 @@ const styles = StyleSheet.create({
     borderColor: "#cccccc",
     width: "100%",
     padding: 8,
+    backgroundColor: "white",
   },
   inputContainer: {
     flex: 1,
@@ -67,8 +76,9 @@ const styles = StyleSheet.create({
     flexDirection: "row",
   },
   button: {
-    width: 100,
+    width: 50,
     marginHorizontal: 8,
+    padding: 8,
   },
   image: {
     width: 100,
